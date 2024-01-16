@@ -9,11 +9,15 @@ import {
 } from 'styled';
 
 export const PopularMoviesItem = ({ id, name, title, popularity, image }) => {
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
   return (
     <StyledLi>
       <StyledLinkPopular to={`/movies/${id}`}>
         <StyledIMG
-          src={`https://image.tmdb.org/t/p/original${image}`}
+          src={
+            image ? `https://image.tmdb.org/t/p/original${image}` : defaultImg
+          }
           alt={title}
         />
         <StyledTitle3>{name ?? title}</StyledTitle3>

@@ -36,7 +36,7 @@ const Home = () => {
       {status === STATUSES.pending && <Loader />}
       {status === STATUSES.error && <ErrorMessage error={error} />}
       {status === STATUSES.success && (
-        <PopularMoviesStart popularMoviesData={popularMoviesData} />
+        <PopularMoviesStart MoviesData={popularMoviesData} />
       )}
     </div>
   );

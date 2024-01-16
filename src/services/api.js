@@ -20,3 +20,15 @@ export const requestCastMovie = async movieId => {
   const { data } = await axios.get(`/3/movie/${movieId}/credits`);
   return data;
 };
+
+export const requestReviewsMovie = async movieId => {
+  const { data } = await axios.get(`/3/movie/${movieId}/reviews`);
+  return data;
+};
+
+export const requestMoviesByQuery = async query => {
+  const { data } = await axios.get(
+    `3/search/movie?query=${query}&include_adult=false`
+  );
+  return data;
+};
