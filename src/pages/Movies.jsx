@@ -4,6 +4,7 @@ import Notiflix from 'notiflix';
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { requestMoviesByQuery } from 'services/api';
+import { StyledFormButton, StyledFormDiv, StyledFormInput } from 'styled';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -36,10 +37,18 @@ const Movies = () => {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="searchInput" defaultValue={query} required />
-        <button type="submit">Search</button>
-      </form>
+      <StyledFormDiv>
+        <form onSubmit={handleSubmit}>
+          <StyledFormInput
+            type="text"
+            name="searchInput"
+            placeholder="Search movies..."
+            defaultValue={query}
+            required
+          />
+          <StyledFormButton type="submit">Search</StyledFormButton>
+        </form>
+      </StyledFormDiv>
       {isLoading && <Loader />}
       {moviesQuery !== null && moviesQuery.length > 0 && (
         <PopularMoviesStart MoviesData={moviesQuery} />
