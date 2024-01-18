@@ -35,7 +35,7 @@ const Movies = () => {
   };
   return (
     <div>
-      <SearchMovieForm query={moviesQuery} handleSubmit={handleSubmit} />
+      <SearchMovieForm handleSubmit={handleSubmit} />
       {isLoading && <Loader />}
       {moviesQuery !== null && moviesQuery.length > 0 && (
         <MoviesList MoviesData={moviesQuery} />
