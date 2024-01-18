@@ -2,7 +2,7 @@ import React from 'react';
 import { PopularMoviesItem } from './PopularMoviesItem';
 import { StyledUl } from 'styled';
 
-export const PopularMoviesStart = ({ MoviesData }) => {
+export const MoviesList = ({ MoviesData }) => {
   return (
     <StyledUl>
       {MoviesData.map(({ id, name, title, popularity, poster_path }) => (

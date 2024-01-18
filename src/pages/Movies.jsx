@@ -1,10 +1,10 @@
 import { Loader } from 'components/Loader/Loader';
-import { PopularMoviesStart } from 'components/PopularMovies/PopularMoviesStart';
+import { MoviesList } from 'components/PopularMovies/MoviesList';
+import { SearchMovieForm } from 'components/SearchMovieForm/SearchMovieForm';
 import Notiflix from 'notiflix';
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { requestMoviesByQuery } from 'services/api';
-import { StyledFormButton, StyledFormDiv, StyledFormInput } from 'styled';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -28,30 +28,17 @@ const Movies = () => {
     fetchMovieByQuery();
   }, [query]);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const search = e.currentTarget.elements.searchInput.value;
+  const handleSubmit = search => {
     setSearchParams({
       film: search,
     });
   };
   return (
     <div>
-      <StyledFormDiv>
-        <form onSubmit={handleSubmit}>
-          <StyledFormInput
-            type="text"
-            name="searchInput"
-            placeholder="Search movies..."
-            defaultValue={query}
-            required
-          />
-          <StyledFormButton type="submit">Search</StyledFormButton>
-        </form>
-      </StyledFormDiv>
+      <SearchMovieForm query={moviesQuery} handleSubmit={handleSubmit} />
       {isLoading && <Loader />}
       {moviesQuery !== null && moviesQuery.length > 0 && (
-        <PopularMoviesStart MoviesData={moviesQuery} />
+        <MoviesList MoviesData={moviesQuery} />
       )}
     </div>
   );

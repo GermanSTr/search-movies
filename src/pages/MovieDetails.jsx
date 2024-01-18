@@ -3,13 +3,10 @@ import { ErrorMessage } from 'components/ErrorMessage/ErrorMessage';
 import { Loader } from 'components/Loader/Loader';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, Route, Routes, useLocation, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 
 import { requestDetailsMovie } from 'services/api';
 import { STATUSES } from 'utils/constans';
-
-import Cast from './Cast';
-import Reviews from './Reviews';
 
 import { StyledDetailsDiv, StyledLinkDetails } from 'styled';
 
@@ -53,10 +50,7 @@ const MovieDetails = () => {
             <StyledLinkDetails to="cast">Cast</StyledLinkDetails>
             <StyledLinkDetails to="reviews">Reviews</StyledLinkDetails>
           </StyledDetailsDiv>
-          <Routes>
-            <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} />
-          </Routes>
+          <Outlet />
         </>
       )}
     </div>

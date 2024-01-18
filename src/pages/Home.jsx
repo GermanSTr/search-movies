@@ -4,7 +4,7 @@ import { requestPopularMovies } from 'services/api';
 
 import { STATUSES } from 'utils/constans';
 
-import { PopularMoviesStart } from '../components/PopularMovies/PopularMoviesStart';
+import { MoviesList } from '../components/PopularMovies/MoviesList';
 import { Loader } from 'components/Loader/Loader';
 import { ErrorMessage } from 'components/ErrorMessage/ErrorMessage';
 
@@ -36,7 +36,7 @@ const Home = () => {
       {status === STATUSES.pending && <Loader />}
       {status === STATUSES.error && <ErrorMessage error={error} />}
       {status === STATUSES.success && (
-        <PopularMoviesStart MoviesData={popularMoviesData} />
+        <MoviesList MoviesData={popularMoviesData} />
       )}
     </div>
   );
